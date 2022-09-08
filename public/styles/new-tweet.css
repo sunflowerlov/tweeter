@@ -1,0 +1,84 @@
+section {
+  width: 90%;
+  margin: 0 auto;
+}
+
+textarea {
+  border: none;
+  outline: none;
+  border-bottom: 5px solid black;
+  background-color: transparent;
+  resize: none;
+  width: 100%;
+  height: 30px;  
+}
+
+.button-and-count {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-family: 'Bungee', cursive;
+}
+
+button {
+  background-color: #4056A1;
+  color:white;
+  border: none;
+}
+
+.tweet-one {
+  height: 200px;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 40px;
+  border: 5px solid black;
+}
+
+.tweet-one:hover {
+  box-shadow: 11px 10px 3px #C9CADF;
+}
+
+
+.tweet-one-header {
+  display: flex;
+  justify-content: space-between;
+  width: 96%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.tweet-one-username-right {
+  color:gainsboro;
+}
+
+.tweet-one-textarea {
+  width: 98%;
+  margin: 0 auto;
+  border-bottom: 5px solid black;
+}
+
+.tweet-one-input {
+  width: 98%;
+  margin: 24px auto;
+}
+
+.tweet-one-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 96%;
+  margin: 0 auto;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+#fa-flag:hover {
+  color:orange
+}
+
+#fa-smile-wink:hover {
+  color:orange
+}
+
+#fa-heart:hover {
+  color:orange
+}
