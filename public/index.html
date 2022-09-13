@@ -36,6 +36,12 @@
       src="https://kit.fontawesome.com/b0c6caa9a8.js"
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
+      integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
@@ -68,8 +74,15 @@
     <!-- Page-specific (main) content here -->
     <main id="container" class="container">
       <section class="new-tweet">
+        <div class="tweet-alarm">
+          <div id="tweet-alarm-empty">It's empty! pls type something</div>
+          <div id="tweet-alarm-tooLong">
+            Too long! pls respect our arbitraty limit of 140 character
+          </div>
+        </div>
+
         <!-- <h2>Compose Tweet</h2> -->
-        <form action="/tweets/" method="POST">
+        <form action="/tweets/" class="tweet-form">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <div class="button-and-count">
@@ -81,31 +94,7 @@
         </form>
       </section>
 
-      <section class="tweet-container">
-        <article class="tweet-one">
-          <header class="tweet-one-header">
-            <label>
-              <i class="far fa-user-circle"></i>
-              userName
-            </label>
-            <div class="tweet-one-username-right">@userName</div>
-          </header>
-
-          <div class="tweet-one-textarea">
-            <p class="tweet-one-input">hello world</p>
-          </div>
-
-          <footer class="tweet-one-footer">
-            <div>10 days ago</div>
-
-            <div class="tweet-one-emoji">
-              <i id="fa-flag" class="fas fa-flag"></i>
-              <i id="fa-smile-wink" class="fas fa-smile-wink"></i>
-              <i id="fa-heart" class="fas fa-heart"></i>
-            </div>
-          </footer>
-        </article>
-      </section>
+      <section class="tweets-container"></section>
     </main>
   </body>
 </html>
