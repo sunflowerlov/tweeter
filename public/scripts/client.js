@@ -1,33 +1,45 @@
-// Fake data taken from initial-tweets.json
-const data = [
-  {
-    user: {
-      name: "Newton",
-      avatars: "https://i.imgur.com/73hZDYK.png",
-      handle: "@SirIsaac",
-    },
-    content: {
-      text: "If I have seen further it is by standing on the shoulders of giants",
-    },
-    created_at: 1461116232227,
-  },
-  {
-    user: {
-      name: "Descartes",
-      avatars: "https://i.imgur.com/nlhLi3I.png",
-      handle: "@rd",
-    },
-    content: {
-      text: "Je pense , donc je suis",
-    },
-    created_at: 1461113959088,
-  },
-];
-
 $(document).ready(function () {
-  console.log('ready')
-  renderTweets(data)
-})
+  $('#tweet-alarm-empty').hide()
+  $('#tweet-alarm-tooLong').hide()
+  $(".tweet-form").on("submit", onSubmit);
+  console.log("ready");
+  loadtweets();
+});
+
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
+
+const onSubmit = function (event) {
+  event.preventDefault();
+  const data = $(this).serialize();
+  console.log("this", this);
+
+  let text = $("#tweet-text").val();
+
+  console.log(text);
+  if (text.length < 1) {
+    $('#tweet-alarm-empty').slideDown('slow')
+    return;
+  } else if (text.length > 140) {
+    $('#tweet-alarm-tooLong').slideDown('slow')
+    return;
+  } 
+
+  $.post("/tweets", data).then(() => {
+    $(".tweets-container").empty()
+    loadtweets()
+  });
+};
+
+const loadtweets = function () {
+  $.get("/tweets").then((data) => {
+    renderTweets(data);
+  });
+};
 
 const renderTweets = function (tweets) {
   // loops through tweets
@@ -35,8 +47,8 @@ const renderTweets = function (tweets) {
   // takes return value and appends it to the tweets container
   for (const tweet of tweets) {
     let element = createTweetElement(tweet);
-    
-    $(".tweet-container").prepend(element);
+
+    $(".tweets-container").prepend(element);
   }
 };
 
@@ -45,7 +57,7 @@ const createTweetElement = function (tweet) {
   let avatars = tweet.user.avatars;
   let handle = tweet.user.handle;
   let text = tweet.content.text;
-  let time = tweet.created_at;
+  let time = timeago.format(tweet.created_at);
   let $tweet = `
   <article class="tweet-one">
   <header class="tweet-one-header">
@@ -57,7 +69,7 @@ const createTweetElement = function (tweet) {
   </header>
 
   <div class="tweet-one-textarea">
-    <p class="tweet-one-input">${text}</p>
+    <p class="tweet-one-input">${escape(text)}</p>
   </div>
 
   <footer class="tweet-one-footer">
@@ -74,4 +86,3 @@ const createTweetElement = function (tweet) {
 
   return $tweet;
 };
-
