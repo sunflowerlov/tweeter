@@ -30,5 +30,18 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
 
+
+#tweet-alarm-empty {
+  height: 40px;
+  border: 5px solid red;
+  color:red
+}
+
+#tweet-alarm-tooLong {
+  height: 40px;
+  border: 5px solid red;
+  color: red;
+  
 }
