@@ -6,7 +6,9 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -19,12 +21,17 @@ body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+.tweet-main {
+  width: 90%;
+  margin: 0 auto;
+}
 
 main {
   display: flex;
@@ -32,16 +39,14 @@ main {
   justify-content: center;
 }
 
-
 #tweet-alarm-empty {
   height: 40px;
   border: 5px solid red;
-  color:red
+  color: red;
 }
 
 #tweet-alarm-tooLong {
   height: 40px;
   border: 5px solid red;
   color: red;
-  
 }

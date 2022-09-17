@@ -1,0 +1,16 @@
+@media only screen and (min-width: 768px) {
+  body {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .main-header {
+    float: left;
+    width: 50%;
+  }
+  .container {
+    margin-top: 150px;
+  }
+}
