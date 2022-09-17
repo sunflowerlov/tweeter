@@ -17,7 +17,7 @@ This repository is the starter code for the project: Students will fork and clon
 - Express
 - Node 5.10.x or above
 
-#screenshoot
+## screenshoot
 desktop full size with typing empty
 ![Screen Shot 2022-09-17 at 4 20 50 PM](https://user-images.githubusercontent.com/103520064/190875256-37cc7349-5d78-403d-a2cf-5c7e843759e1.png)
 table size with over 140 character
