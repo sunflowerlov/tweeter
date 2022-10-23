@@ -1,6 +1,5 @@
 $(document).ready(function () {
-  $('#tweet-alarm-empty').hide()
-  $('#tweet-alarm-tooLong').hide()
+
   $(".tweet-form").on("submit", onSubmit);
   console.log("ready");
   loadtweets();
@@ -20,7 +19,8 @@ const onSubmit = function (event) {
 
   let text = $("#tweet-text").val();
 
-  console.log(text);
+
+  //reach the condition then warning tag comes out
   if (text.length < 1) {
     $('#tweet-alarm-empty').slideDown('slow')
     return;
@@ -29,8 +29,11 @@ const onSubmit = function (event) {
     return;
   } 
 
+  //tag hidden again
   $.post("/tweets", data).then(() => {
     $(".tweets-container").empty()
+    $('#tweet-alarm-empty').hide()
+    $('#tweet-alarm-tooLong').hide()
     loadtweets()
   });
 };

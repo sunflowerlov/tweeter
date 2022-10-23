@@ -82,3 +82,11 @@ button {
 #fa-heart:hover {
   color:orange
 }
+
+#tweet-alarm-empty {
+  display: none;
+}
+
+#tweet-alarm-tooLong {
+  display: none;
+}
