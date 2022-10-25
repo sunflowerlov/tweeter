@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
   $(".tweet-form").on("submit", onSubmit);
   console.log("ready");
   loadtweets();
@@ -11,6 +10,20 @@ const escape = function (str) {
   return div.innerHTML;
 };
 
+const isUserInputValid = function (text) {
+  $("#tweet-alarm-empty").slideUp();
+  $("#tweet-alarm-tooLong").slideUp();
+  if (text.length < 1) {
+    $('#tweet-alarm-empty').slideDown('slow')
+    return false;
+  } 
+  if (text.length > 140) {
+    $('#tweet-alarm-tooLong').slideDown('slow')
+    return false;
+  } 
+
+  return true
+}
 
 const onSubmit = function (event) {
   event.preventDefault();
@@ -19,23 +32,18 @@ const onSubmit = function (event) {
 
   let text = $("#tweet-text").val();
 
-
   //reach the condition then warning tag comes out
-  if (text.length < 1) {
-    $('#tweet-alarm-empty').slideDown('slow')
-    return;
-  } else if (text.length > 140) {
-    $('#tweet-alarm-tooLong').slideDown('slow')
-    return;
-  } 
+ if (isUserInputValid(text)) {
+   //tag hidden again
+   $.post("/tweets", data).then(() => {
+     $("#tweet-text").val('');
+     $(".tweets-container").empty();
+     $("#tweet-alarm-empty").slideUp();
+     $("#tweet-alarm-tooLong").slideUp();
+     loadtweets();
+   });
+ }
 
-  //tag hidden again
-  $.post("/tweets", data).then(() => {
-    $(".tweets-container").empty()
-    $('#tweet-alarm-empty').hide()
-    $('#tweet-alarm-tooLong').hide()
-    loadtweets()
-  });
 };
 
 const loadtweets = function () {
